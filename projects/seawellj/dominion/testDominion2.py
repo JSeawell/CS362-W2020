@@ -5,14 +5,36 @@ testDominion2
 
 Created on 1/15/2020
 
-@author: jseawell
+@author: Jake Seawell (seawellj)
+
 """
 
 import Dominion
 import testUtility
 
+#Enter/Edit names of players here
+player_names = ["*Jake", "*Kenna", "*Ron", "*Debbie"]
+
+num = 10
+
+"""
+This variable, playerNum, represents how many curses and vict cards
+are in the deck, depending on how many players there are.
+
+This playerNum gets passed as a parameter to InitializeGame(), which will use
+the playerNum for "Curse/Victory" initialization
+
+For the correct game implementation, playerNum = 2, but to introduce a game
+bug, I have changed: num = 4
+"""
+
+playerNum = 4
+
+
+
+
 #initialize game setup
-player_names, supply_order, supply, players = testUtility.InitializeGame()
+supply_order, supply, players = testUtility.InitializeGame(player_names, num, playerNum)
 
 #initialize the trash
 trash = []

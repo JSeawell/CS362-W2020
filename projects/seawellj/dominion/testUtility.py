@@ -1,8 +1,10 @@
 """
 Created on 1/15/2020
-@author: jseawell
+@author: Jake Seawell (seawellj)
 
 """
+
+# Test Utility file for dominion
 
 import Dominion
 import random
@@ -10,14 +12,13 @@ from collections import defaultdict
 
 #function to initialize game setup
 #this function runs all the functions below
-def InitializeGame():
-	player_names = GetPlayerNames()
+def InitializeGame(player_names, num, playerNum):
 
 	# Get # of curse and victory card
-	nV, nC = GetNumCurseVictory(player_names)
+	nV, nC = GetNumCurseVictory(player_names, playerNum)
 
 	# initialize boxes
-	box = GetBoxes(nV)
+	box = GetBoxes(nV, num)
 
 	supply_order = GetSupplyOrder()
 
@@ -28,55 +29,50 @@ def InitializeGame():
 	trash = []
 
 	players = GetPlayers(player_names)
-	return player_names, supply_order, supply, players
+	return supply_order, supply, players
 
 
 
 # INITIALIZATION FUNCTIONS:
 
-
-def GetPlayerNames():
-	player_names = ["Annie", "*Ben", "*Carla"]
-	return player_names
-
-def GetNumCurseVictory(player_names):
+def GetNumCurseVictory(player_names, playerNum):
 	#number of curses and victory cards
-	if len(player_names)>2:
+	#replace playerNum with 2
+	if len(player_names)>playerNum:
 		nV=12
 	else:
 		nV=8
 	nC = -10 + 10 * len(player_names)
 	return nV, nC
 
-# Test Utility file for dominion
-def GetBoxes(nV):
+def GetBoxes(nV, num):
 	#Define box
 	box = {}
-	box["Woodcutter"]=[Dominion.Woodcutter()]*10
-	box["Smithy"]=[Dominion.Smithy()]*10
-	box["Laboratory"]=[Dominion.Laboratory()]*10
-	box["Village"]=[Dominion.Village()]*10
-	box["Festival"]=[Dominion.Festival()]*10
-	box["Market"]=[Dominion.Market()]*10
-	box["Chancellor"]=[Dominion.Chancellor()]*10
-	box["Workshop"]=[Dominion.Workshop()]*10
-	box["Moneylender"]=[Dominion.Moneylender()]*10
-	box["Chapel"]=[Dominion.Chapel()]*10
-	box["Cellar"]=[Dominion.Cellar()]*10
-	box["Remodel"]=[Dominion.Remodel()]*10
-	box["Adventurer"]=[Dominion.Adventurer()]*10
-	box["Feast"]=[Dominion.Feast()]*10
-	box["Mine"]=[Dominion.Mine()]*10
-	box["Library"]=[Dominion.Library()]*10
+	box["Woodcutter"]=[Dominion.Woodcutter()]*num
+	box["Smithy"]=[Dominion.Smithy()]*num
+	box["Laboratory"]=[Dominion.Laboratory()]*num
+	box["Village"]=[Dominion.Village()]*num
+	box["Festival"]=[Dominion.Festival()]*num
+	box["Market"]=[Dominion.Market()]*num
+	box["Chancellor"]=[Dominion.Chancellor()]*num
+	box["Workshop"]=[Dominion.Workshop()]*num
+	box["Moneylender"]=[Dominion.Moneylender()]*num
+	box["Chapel"]=[Dominion.Chapel()]*num
+	box["Cellar"]=[Dominion.Cellar()]*num
+	box["Remodel"]=[Dominion.Remodel()]*num
+	box["Adventurer"]=[Dominion.Adventurer()]*num
+	box["Feast"]=[Dominion.Feast()]*num
+	box["Mine"]=[Dominion.Mine()]*num
+	box["Library"]=[Dominion.Library()]*num
 	box["Gardens"]=[Dominion.Gardens()]*nV
-	box["Moat"]=[Dominion.Moat()]*10
-	box["Council Room"]=[Dominion.Council_Room()]*10
-	box["Witch"]=[Dominion.Witch()]*10
-	box["Bureaucrat"]=[Dominion.Bureaucrat()]*10
-	box["Militia"]=[Dominion.Militia()]*10
-	box["Spy"]=[Dominion.Spy()]*10
-	box["Thief"]=[Dominion.Thief()]*10
-	box["Throne Room"]=[Dominion.Throne_Room()]*10
+	box["Moat"]=[Dominion.Moat()]*num
+	box["Council Room"]=[Dominion.Council_Room()]*num
+	box["Witch"]=[Dominion.Witch()]*num
+	box["Bureaucrat"]=[Dominion.Bureaucrat()]*num
+	box["Militia"]=[Dominion.Militia()]*num
+	box["Spy"]=[Dominion.Spy()]*num
+	box["Thief"]=[Dominion.Thief()]*num
+	box["Throne Room"]=[Dominion.Throne_Room()]*num
 	return box
 
 def GetSupplyOrder():

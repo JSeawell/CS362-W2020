@@ -5,14 +5,35 @@ testDominion1
 
 Created on 1/15/2020
 
-@author: jseawell
+@author: Jake Seawell (seawellj)
+
 """
 
 import Dominion
 import testUtility
 
+#Enter/Edit names of players here
+player_names = ["*Jake", "*Kenna", "*Ron", "*Debbie"]
+
+
+
+"""
+This variable, num, represents the quantity of each card in the box.
+
+This num gets passed as a parameter to InitializeGame(), which will use
+the num for "box" initialization
+
+For the correct game implementation, num = 10, but to introduce a game
+bug, I have changed: num = 5
+"""
+num = 5
+
+playerNum = 2
+
+
+
 #initialize game setup
-player_names, supply_order, supply, players = testUtility.InitializeGame()
+supply_order, supply, players = testUtility.InitializeGame(player_names, num, playerNum)
 
 #initialize the trash
 trash = []
@@ -21,7 +42,7 @@ trash = []
 turn  = 0
 while not Dominion.gameover(supply):
     turn += 1    
-    print("\r")    
+    print("\r")
     for value in supply_order:
         print (value)
         for stack in supply_order[value]:
