@@ -1,3 +1,8 @@
+"""
+Created on 1/15/2020
+@author: jseawell
+"""
+
 import Dominion
 import random
 from collections import defaultdict
